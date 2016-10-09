@@ -76,7 +76,7 @@ public class PurchaseTicketsActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 String inputString = "" + year + " " + (month + 1) + " " + dayOfMonth;
-                DateFormat df = new SimpleDateFormat("MM_dd_yyyy", Locale.US);
+                DateFormat df = new SimpleDateFormat("yy MM dd", Locale.US);
                 Date date = null;
                 try {
                     date = df.parse(inputString);

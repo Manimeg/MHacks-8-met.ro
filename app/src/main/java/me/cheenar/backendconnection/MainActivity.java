@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         setTitle("Met.ro");
 
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
                 .permitAll().build();
         StrictMode.setThreadPolicy(policy);
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.passwordField);
         login = (Button) findViewById(R.id.button);
         id = (TextView) findViewById(R.id.personID);
+
+        id.setAlpha(0.0F);
 
         requestPermissions(
                 new String[]{
