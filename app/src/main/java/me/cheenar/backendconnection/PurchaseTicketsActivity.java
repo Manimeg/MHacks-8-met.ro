@@ -34,6 +34,8 @@ public class PurchaseTicketsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchase_tickets);
 
+        setTitle("Ticket Parameters");
+
         continueToPurchaseButton = (Button)findViewById(R.id.continueToPurchaseButton);
         continueToPurchaseButton.setEnabled(false);
 
@@ -64,7 +66,7 @@ public class PurchaseTicketsActivity extends AppCompatActivity {
 
         validDatesTextView = (TextView)findViewById(R.id.validDatesTextView);
 
-        startDateString = (new SimpleDateFormat("EEEE, MMMM d, yyyy", Locale.US)).format(new Date(System.currentTimeMillis()));
+        startDateString = (new SimpleDateFormat("MM_dd_yyyy", Locale.US)).format(new Date(System.currentTimeMillis()));
         validDatesTextView.setText(startDateString);
 
         startDateCalendarView = (CalendarView)findViewById(R.id.startDateCalendarView);
@@ -74,7 +76,7 @@ public class PurchaseTicketsActivity extends AppCompatActivity {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
                 String inputString = "" + year + " " + (month + 1) + " " + dayOfMonth;
-                DateFormat df = new SimpleDateFormat("yy MM dd", Locale.US);
+                DateFormat df = new SimpleDateFormat("MM_dd_yyyy", Locale.US);
                 Date date = null;
                 try {
                     date = df.parse(inputString);

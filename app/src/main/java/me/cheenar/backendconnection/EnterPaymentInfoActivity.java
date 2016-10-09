@@ -11,12 +11,15 @@ import android.widget.Toast;
 
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static android.R.attr.end;
 import static android.R.attr.password;
 
 public class EnterPaymentInfoActivity extends AppCompatActivity {
@@ -32,6 +35,8 @@ public class EnterPaymentInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_payment_info);
+
+        setTitle("Ticket Payment");
 
         SimpleDateFormat sdf = new SimpleDateFormat("MM_dd_yyyy");
         Bundle ticketInfo = getIntent().getExtras();
@@ -81,10 +86,11 @@ public class EnterPaymentInfoActivity extends AppCompatActivity {
         //Toast.makeText(EnterPaymentInfoActivity.this, "Purchase Complete!", Toast.LENGTH_LONG).show();
 
         String s = "http://66.175.213.218/p/purchase_fare?profile_id=" + MainActivity.user.profileID + "&fare_type=" + passType.replace(" ", "%20") + "&active_start=" + startDate + "&active_end=" + endDate;
+        Toast.makeText(this, s, Toast.LENGTH_LONG);
         try
         {
-            URL url = new URL(s);
-            HttpURLConnection http = (HttpURLConnection) url.openConnection();
+            JSONObject obj = MainActivity.getJSONObjectFromURL(s);
+            obj.get("success");
             Toast.makeText(this, "Successfully Purchased Ticket", Toast.LENGTH_SHORT).show();
         }
         catch(Exception e) {

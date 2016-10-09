@@ -16,6 +16,8 @@ public class PortalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_portal);
 
+        setTitle("Met.ro");
+
         purchaseTickets = (Button)findViewById(R.id.purchaseFare);
         viewTickets = (Button)findViewById(R.id.viewTickets);
 
