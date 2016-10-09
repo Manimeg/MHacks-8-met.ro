@@ -98,7 +98,7 @@ public class FaresActivity extends AppCompatActivity {
 
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
 
-        int size = 256;
+        int size = 640;
 
         BitMatrix bitMatrix = qrCodeWriter.encode(myCodeText, BarcodeFormat.QR_CODE, size, size, hintMap);
         int width = bitMatrix.getWidth();
